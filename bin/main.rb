@@ -8,7 +8,7 @@ class Linter
   def read_file(file)
     puts 'Launching DragonLint...'
     puts 'Opening .rb file...'
-    if file[-2, 2] != 'rb'
+    if file[-3, 3] != '.rb'
       puts "Ruby file not found. The specified path '#{file}' does not end with .rb"
       exit
     else
