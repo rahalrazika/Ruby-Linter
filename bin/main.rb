@@ -1,6 +1,10 @@
 #!/usr/bin/env ruby
 
 class Linter
+  def initialize(file_path)
+    @file_path = file_path
+  end
+
   def read_file(file)
     puts 'Launching DragonLint...'
     puts 'Opening .rb file...'
@@ -19,9 +23,9 @@ class Linter
   end
 
   def run
-    read_file('bin/error/test.rb')
+    read_file(@file_path)
   end
 end
 
-lint = Linter.new
+lint = Linter.new('bin/error/test.rb')
 lint.run
