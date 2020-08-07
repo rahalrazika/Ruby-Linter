@@ -2,6 +2,7 @@ AllCops:
   Exclude:
     - "Guardfile"
     - "Rakefile"
+    - 'bin/error/test.rb'
 
   DisplayCopNames: true
 
