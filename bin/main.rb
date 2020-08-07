@@ -2,8 +2,15 @@
 
 class Linter
   def read_file(file)
+    puts 'Launching DragonLint...'
     puts 'Opening file...'
-    puts "Total lines of code within file to be assesed: #{File.open(file).readlines.size}"
+    begin
+      puts "Total lines of code to be checked within '#{file}': #{File.open(file).readlines.size}"
+      puts 'Searching for linting errors...'
+    rescue StandardError
+      puts "Unable to open file '#{file}' please ensure specified path given is correct."
+      exit
+    end
   end
 
   def run
