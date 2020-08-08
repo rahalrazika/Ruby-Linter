@@ -65,7 +65,7 @@ describe NamingTest do
       expect(test_if_method_name('class ExampleClass')).to be false
     end
 
-    it 'returns true if given a sring with 1 equals sign' do
+    it 'returns false if given a sring with 1 equals sign' do
       expect(test_if_method_name('gfdgjkdf = gfdjklgdf')).to be false
     end
 
