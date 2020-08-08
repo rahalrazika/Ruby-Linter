@@ -31,4 +31,14 @@ module NamingTest
     end
     @each_variable_name_error
   end
+
+  def test_if_method_name(input)
+    if %w[class = module == += -=].any? { |word| input.include? word }
+      false
+    elsif ['def '].any? { |word| input.strip[0,4].include? word }
+      true
+    else
+      false
+    end
+  end
 end
