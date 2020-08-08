@@ -26,7 +26,7 @@ module NamingTest
     File.open(file, 'r').each_line do |line|
       line_number += 1
       if test_if_snake_case(line) == false && test_if_variable_name(line) == true
-        @each_variable_name_error[line_number] = line.chop
+        @each_variable_name_error[line_number] = line.strip.chop
       end
     end
     @each_variable_name_error
