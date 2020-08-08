@@ -30,17 +30,17 @@ describe NamingTest do
     end
   end
 
-  describe '#test_if_snake_case' do
+  describe '#test_if_variable_snake_case' do
     it 'returns false if given a string that contains a capital' do
-      expect(test_if_snake_case('baDvaRiable = 5')).to be false
+      expect(test_if_variable_snake_case('baDvaRiable = 5')).to be false
     end
 
     it 'returns true if given a string that has proper snake case' do
-      expect(test_if_snake_case('good_snake_case = 6')).to be true
+      expect(test_if_variable_snake_case('good_snake_case = 6')).to be true
     end
 
     it 'returns true if given a string that contains proper snake case before the equals and not after' do
-      expect(test_if_snake_case('good_snake_case = notVaRiAble')).to be true
+      expect(test_if_variable_snake_case('good_snake_case = notVaRiAble')).to be true
     end
   end
 
@@ -50,8 +50,8 @@ describe NamingTest do
     end
 
     it 'returns false if given a string that doesnt start with def but has def in it' do
-        expect(test_if_method_name('example_method def')).to be false
-      end
+      expect(test_if_method_name('example_method def')).to be false
+    end
 
     it 'returns false if given a string that contains end' do
       expect(test_if_method_name('end')).to be false
@@ -71,6 +71,15 @@ describe NamingTest do
 
     it 'returns false if given a sring with a double equals sign' do
       expect(test_if_method_name('gfdgjkdf == gfdjklgdf')).to be false
+    end
+  end
+  describe '#test_if_method_snake_case' do
+    it 'returns false if given a string that contains a capital after def' do
+      expect(test_if_method_snake_case('def baDvaRiable')).to be false
+    end
+
+    it 'returns true if given a string that has proper snake case after def' do
+      expect(test_if_method_snake_case('def good_snake_case')).to be true
     end
   end
 end

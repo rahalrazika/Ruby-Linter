@@ -9,7 +9,7 @@ module NamingTest
     end
   end
 
-  def test_if_snake_case(input)
+  def test_if_variable_snake_case(input)
     input_split_array = input.split('')
     index_of_equals_sign = (input_split_array.find_index { |each| each == '=' }).to_i
     cut_from_equals = (input_split_array[0, index_of_equals_sign]).join
@@ -25,7 +25,7 @@ module NamingTest
     line_number = 0
     File.open(file, 'r').each_line do |line|
       line_number += 1
-      if test_if_snake_case(line) == false && test_if_variable_name(line) == true
+      if test_if_variable_snake_case(line) == false && test_if_variable_name(line) == true
         @each_variable_name_error[line_number] = line.strip.chop
       end
     end
@@ -35,10 +35,19 @@ module NamingTest
   def test_if_method_name(input)
     if %w[class = module == += -=].any? { |word| input.include? word }
       false
-    elsif ['def '].any? { |word| input.strip[0,4].include? word }
+    elsif ['def '].any? { |word| input.strip[0, 4].include? word }
       true
     else
       false
+    end
+  end
+
+  def test_if_method_snake_case(input)
+    strip_def = input.strip[4, input.size]
+    if strip_def.split('').any? { |letter| letter == letter.upcase && letter != letter.downcase }
+      false
+    else
+      true
     end
   end
 end
