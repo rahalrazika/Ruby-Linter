@@ -43,11 +43,23 @@ module NamingTest
   end
 
   def test_if_method_snake_case(input)
-    strip_def = input.strip[4, input.size]
-    if strip_def.split('').any? { |letter| letter == letter.upcase && letter != letter.downcase }
+    strip_input = input.strip.split('')
+    only_name = strip_input[4, strip_input.size].to_a
+    if only_name.any? { |letter| letter == letter.upcase && letter != letter.downcase }
       false
     else
       true
     end
+  end
+
+  def test_method_name(file)
+    line_number = 0
+    File.open(file, 'r').each_line do |line|
+      line_number += 1
+      if test_if_method_snake_case(line) == false && test_if_method_name(line) == true
+        @each_method_name_error[line_number] = line.chop
+      end
+    end
+    @each_method_name_error
   end
 end
