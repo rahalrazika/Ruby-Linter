@@ -29,4 +29,18 @@ describe NamingTest do
       expect(test_if_variable_name('gfdgjkdf == gfdjklgdf')).to be false
     end
   end
+
+  describe '#test_if_snake_case' do
+    it 'returns false if given a string that contains a capital' do
+      expect(test_if_snake_case('baDvaRiable = 5')).to be false
+    end
+
+    it 'returns true if given a string that has proper snake case' do
+      expect(test_if_snake_case('good_snake_case = 6')).to be true
+    end
+
+    it 'returns true if given a string that contains proper snake case before the equals and not after' do
+      expect(test_if_snake_case('good_snake_case = notVaRiAble')).to be true
+    end
+  end
 end
