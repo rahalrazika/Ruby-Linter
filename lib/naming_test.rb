@@ -57,7 +57,7 @@ module NamingTest
     File.open(file, 'r').each_line do |line|
       line_number += 1
       if test_if_method_snake_case(line) == false && test_if_method_name(line) == true
-        @each_method_name_error[line_number] = line.chop
+        @each_method_name_error[line_number] = line.strip
       end
     end
     @each_method_name_error
