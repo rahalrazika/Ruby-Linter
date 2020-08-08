@@ -1,8 +1,8 @@
 #good variable name
-example_var = 0
+example_var = 765876
 
 #bad variable name
-ExampleVar = 0
+ExampleVar = 6546786
 
 #good method name
 def example_method

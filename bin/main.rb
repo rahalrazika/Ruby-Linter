@@ -1,8 +1,12 @@
 #!/usr/bin/env ruby
+require_relative '../lib/naming_test.rb'
 
 class Linter
+  include NamingTest
+
   def initialize(file_path)
     @file_path = file_path
+    @each_variable_name_error = {}
   end
 
   def read_file(file)
