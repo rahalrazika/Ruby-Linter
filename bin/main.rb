@@ -28,6 +28,7 @@ class Linter
 
   def run
     read_file(@file_path)
+    puts test_variable_name(@file_path)
   end
 end
 
