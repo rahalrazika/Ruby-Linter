@@ -95,4 +95,14 @@ module NamingTest
     end
     @each_class_name_error
   end
+
+  def test_if_module_name(input)
+    if %w[def = class == += -=].any? { |word| input.include? word }
+      false
+    elsif ['module '].any? { |word| input.strip[0, 7].include? word }
+      true
+    else
+      false
+    end
+  end
 end

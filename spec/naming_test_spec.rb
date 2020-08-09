@@ -103,7 +103,7 @@ describe NamingTest do
       expect(test_if_class_name('def ExampleClass')).to be false
     end
 
-    it 'returns true if given a sring with 1 equals sign' do
+    it 'returns false if given a sring with 1 equals sign' do
       expect(test_if_class_name('gfdgjkdf = gfdjklgdf')).to be false
     end
 
@@ -122,6 +122,35 @@ describe NamingTest do
 
     it 'returns false if given a string that contains a _ in the class definition' do
       expect(test_if_class_pascal_case('class Bad_Pascal')).to be false
+    end
+  end
+  describe '#test_if_module_name' do
+    it 'returns true if given a string that starts with method' do
+      expect(test_if_module_name('module ExampleModule')).to be true
+    end
+
+    it 'returns false if given a string with module not at the start' do
+      expect(test_if_module_name('def module_example')).to be false
+    end
+
+    it 'returns false if given a string that contains end' do
+      expect(test_if_module_name('end')).to be false
+    end
+
+    it 'returns false if given a string that contains the word "class"' do
+      expect(test_if_module_name('class ExampleModule')).to be false
+    end
+
+    it 'returns false if given a string that contains def' do
+      expect(test_if_module_name('def ExampleClass')).to be false
+    end
+
+    it 'returns false if given a sring with 1 equals sign' do
+      expect(test_if_module_name('gfdgjkdf = gfdjklgdf')).to be false
+    end
+
+    it 'returns false if given a sring with a double equals sign' do
+      expect(test_if_module_name('gfdgjkdf == gfdjklgdf')).to be false
     end
   end
 end
