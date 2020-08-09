@@ -111,4 +111,17 @@ describe NamingTest do
       expect(test_if_class_name('gfdgjkdf == gfdjklgdf')).to be false
     end
   end
+  describe '#test_if_class_pascal_case' do
+    it 'returns false if given a string that does not have a capital at the start of the class definition' do
+      expect(test_if_class_pascal_case('class badPascal')).to be false
+    end
+
+    it 'returns true if given a string that has proper snake case after class' do
+      expect(test_if_class_pascal_case('class GoodPascal')).to be true
+    end
+
+    it 'returns false if given a string that contains a _ in the class definition' do
+      expect(test_if_class_pascal_case('class Bad_Pascal')).to be false
+    end
+  end
 end
