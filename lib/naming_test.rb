@@ -76,7 +76,7 @@ module NamingTest
   def test_if_class_pascal_case(input)
     strip_input = input.strip.split('')
     only_name = strip_input[6, strip_input.size].to_a
-    if only_name.any? { |letter| letter == '_'}
+    if only_name.any? { |letter| letter == '_' }
       false
     elsif only_name[0].to_s == only_name[0].to_s.upcase && only_name[0].to_s != only_name[0].to_s.downcase
       true
