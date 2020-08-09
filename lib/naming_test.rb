@@ -117,4 +117,15 @@ module NamingTest
       false
     end
   end
+
+  def test_module_name(file)
+    line_number = 0
+    File.open(file, 'r').each_line do |line|
+      line_number += 1
+      if test_if_module_pascal_case(line) == false && test_if_module_name(line) == true
+        @each_module_name_error[line_number] = line.strip
+      end
+    end
+    @each_module_name_error
+  end
 end

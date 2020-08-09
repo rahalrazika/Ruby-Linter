@@ -9,6 +9,7 @@ class Linter
     @each_variable_name_error = {}
     @each_method_name_error = {}
     @each_class_name_error = {}
+    @each_module_name_error = {}
   end
 
   def read_file(file)
@@ -33,6 +34,7 @@ class Linter
     puts test_variable_name(@file_path)
     puts test_method_name(@file_path)
     puts test_class_name(@file_path)
+    puts test_module_name(@file_path)
   end
 end
 
