@@ -153,4 +153,17 @@ describe NamingTest do
       expect(test_if_module_name('gfdgjkdf == gfdjklgdf')).to be false
     end
   end
+  describe '#test_if_module_pascal_case' do
+    it 'returns false if given a string that does not have a capital at the start of the module definition' do
+      expect(test_if_module_pascal_case('module badPascal')).to be false
+    end
+
+    it 'returns true if given a string that has proper snake case after module' do
+      expect(test_if_module_pascal_case('module GoodPascal')).to be true
+    end
+
+    it 'returns false if given a string that contains a _ in the module definition' do
+      expect(test_if_module_pascal_case('module Bad_Pascal')).to be false
+    end
+  end
 end
