@@ -14,6 +14,11 @@ def ExampleMethod
     #code
 end
 
+#bad method name
+def example_Method
+    #code
+end
+
 #good class name
 class ExampleClass
     #code
@@ -24,6 +29,11 @@ class example_class
     #code
 end
 
+#bad class name
+class exampleClass
+    #code
+end
+
 #good module name
 module ExampleModule
     #code
@@ -31,5 +41,10 @@ end
 
 #bad module name
 module example_module
+    #code
+end
+
+#bad module name
+module exampleModule
     #code
 end
