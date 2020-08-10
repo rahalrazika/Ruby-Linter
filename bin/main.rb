@@ -39,37 +39,43 @@ class Linter
 
   # rubocop: disable Metrics/MethodLength
   # rubocop: disable Metrics/AbcSize
+  # rubocop: disable Layout/LineLength
   def display_results(file)
     puts ' '
     puts '---------'
     puts "Errors inside of #{file}:".cyan
     puts '---------'
-    test_variable_name(file).each do |key, code|
-      puts "  |#{file}| Error: Syntax/VariableName(use_snake_case)".yellow
-      puts '    Line: '.cyan + key.to_s.cyan + ':'.cyan + " #{code}".red
-      puts '  ---------'
-    end
-    test_method_name(file).each do |key, code|
-      puts "  |#{file}| Error: Syntax/MethodName(use_snake_case)".yellow
-      puts '    Line: '.cyan + key.to_s.cyan + ':'.cyan + " #{code}".red
-      puts '  ---------'
-    end
-    test_class_name(file).each do |key, code|
-      puts "  |#{file}| Error: Syntax/ClassName(UsePascalCase)".yellow
-      puts '    Line: '.cyan + key.to_s.cyan + ':'.cyan + " #{code}".red
-      puts '  ---------'
-    end
-    test_module_name(file).each do |key, code|
-      puts "  |#{file}| Error: Syntax/ModuleName(UsePascalCase)".yellow
-      puts '    Line: '.cyan + key.to_s.cyan + ':'.cyan + " #{code}".red
-      puts '  ---------'
+    if test_variable_name(file) == {} && test_method_name(file) == {} && test_class_name(file) == {} && test_module_name(file) == {}
+      puts "  No errors found inside of #{file}".green
+    else
+      test_variable_name(file).each do |key, code|
+        puts "  |#{file}| Error: Syntax/VariableName(use_snake_case)".yellow
+        puts '    Line: '.cyan + key.to_s.cyan + ':'.cyan + " #{code}".red
+        puts '  ---------'
+      end
+      test_method_name(file).each do |key, code|
+        puts "  |#{file}| Error: Syntax/MethodName(use_snake_case)".yellow
+        puts '    Line: '.cyan + key.to_s.cyan + ':'.cyan + " #{code}".red
+        puts '  ---------'
+      end
+      test_class_name(file).each do |key, code|
+        puts "  |#{file}| Error: Syntax/ClassName(UsePascalCase)".yellow
+        puts '    Line: '.cyan + key.to_s.cyan + ':'.cyan + " #{code}".red
+        puts '  ---------'
+      end
+      test_module_name(file).each do |key, code|
+        puts "  |#{file}| Error: Syntax/ModuleName(UsePascalCase)".yellow
+        puts '    Line: '.cyan + key.to_s.cyan + ':'.cyan + " #{code}".red
+        puts '  ---------'
+      end
     end
     puts '---------'
     puts ' '
   end
+
   # rubocop: enable Metrics/MethodLength
   # rubocop: enable Metrics/AbcSize
-
+  # rubocop: enable Layout/LineLength
   def read_all
     file_names = Dir['./bin/error/*.rb'].map { |path| path[12, path.size] }
     file_names.each do |file|

@@ -4,6 +4,7 @@ AllCops:
     - "Rakefile"
     - 'bin/error/test.rb'
     - 'bin/error/test2.rb'
+    - 'bin/error/test3.rb'
 
   DisplayCopNames: true
 
