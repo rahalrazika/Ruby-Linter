@@ -12,6 +12,7 @@ class Linter
     @each_method_name_error = {}
     @each_class_name_error = {}
     @each_module_name_error = {}
+    @each_trailing_space = {}
   end
 
   def launch

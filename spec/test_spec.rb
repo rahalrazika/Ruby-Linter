@@ -1,5 +1,6 @@
 require 'rspec'
 require './lib/naming_test.rb'
+require './lib/trailing_space_test.rb'
 
 describe NamingTest do
   include NamingTest
@@ -164,6 +165,20 @@ describe NamingTest do
 
     it 'returns false if given a string that contains a _ in the module definition' do
       expect(test_if_module_pascal_case('module Bad_Pascal')).to be false
+    end
+  end
+end
+
+describe TrailingSpace do
+  include TrailingSpace
+
+  describe '#test_if_trailing_space' do
+    it 'returns true if given a string with a space on the end' do
+      expect(test_if_trailing_space('test ')).to be true
+    end
+
+    it 'returns false if given a string without a space on the end' do
+      expect(test_if_trailing_space('test')).to be false
     end
   end
 end
