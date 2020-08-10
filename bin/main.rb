@@ -1,9 +1,11 @@
 #!/usr/bin/env ruby
 require_relative '../lib/naming_test.rb'
 require_relative '../lib/string_colors.rb'
+require_relative '../lib/read_all.rb'
 
 class Linter
   include NamingTest
+  include ReadAll
 
   def initialize()
     @each_variable_name_error = {}
@@ -76,16 +78,6 @@ class Linter
   # rubocop: enable Metrics/MethodLength
   # rubocop: enable Metrics/AbcSize
   # rubocop: enable Layout/LineLength
-  def read_all
-    file_names = Dir['./bin/error/*.rb'].map { |path| path[12, path.size] }
-    file_names.each do |file|
-      read_file('bin/error/' + file)
-      @each_variable_name_error = {}
-      @each_method_name_error = {}
-      @each_class_name_error = {}
-      @each_module_name_error = {}
-    end
-  end
 
   def run
     launch
