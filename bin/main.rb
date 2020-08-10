@@ -4,16 +4,22 @@ require_relative '../lib/naming_test.rb'
 class Linter
   include NamingTest
 
-  def initialize(file_path)
-    @file_path = file_path
+  def initialize(_file_path)
     @each_variable_name_error = {}
     @each_method_name_error = {}
     @each_class_name_error = {}
     @each_module_name_error = {}
   end
 
-  def read_file(file)
+  def launch
     puts 'Launching DragonLint...'
+    puts 'Please enter which Ruby file from bin/error/ directory you would like to scan.'
+    puts 'Enter "*" to scan all .rb files'
+    @file = gets.chomp
+    @file_path = 'bin/error/' + @file
+  end
+
+  def read_file(file)
     puts 'Opening .rb file...'
     if file[-3, 3] != '.rb'
       puts "Ruby file not found. The specified path '#{file}' does not end with .rb"
@@ -27,14 +33,15 @@ class Linter
         exit
       end
     end
-  end
-
-  def run
-    read_file(@file_path)
     puts test_variable_name(@file_path)
     puts test_method_name(@file_path)
     puts test_class_name(@file_path)
     puts test_module_name(@file_path)
+  end
+
+  def run
+    launch
+    read_file(@file_path) unless @file == '*'
   end
 end
 
