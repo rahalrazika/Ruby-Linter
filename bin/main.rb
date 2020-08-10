@@ -12,9 +12,9 @@ class Linter
   end
 
   def launch
-    puts 'Launching DragonLint...'
+    puts 'Launching DragonLintAlpha...'
     puts 'Please enter which Ruby file from bin/error/ directory you would like to scan.'
-    puts 'Enter "*" to scan all .rb files'
+    puts 'Enter "*" to scan all .rb files.'
     @file = gets.chomp
     @file_path = 'bin/error/' + @file
   end
@@ -38,10 +38,18 @@ class Linter
 
   def display_results(file)
     puts "Errors inside of #{file}:"
-    puts test_variable_name(file)
-    puts test_method_name(file)
-    puts test_class_name(file)
-    puts test_module_name(file)
+    test_variable_name(file).each do |key, code|
+      puts "|#{file}| Error: Syntax/VariableName(use_snake_case) Line: " + key.to_s + ": #{code}"
+    end
+    test_method_name(file).each do |key, code|
+      puts "|#{file}| Error: Syntax/MethodName(use_snake_case) Line: " + key.to_s + ": #{code}"
+    end
+    test_class_name(file).each do |key, code|
+      puts "|#{file}| Error: Syntax/ClassName(UsePascalCase) Line: " + key.to_s + ": #{code}"
+    end
+    test_module_name(file).each do |key, code|
+      puts "|#{file}| Error: Syntax/ModuleName(UsePascalCase) Line: " + key.to_s + ": #{code}"
+    end
   end
 
   def read_all
