@@ -1,4 +1,4 @@
-module TrailingSpace
+module SpaceTest
   def test_if_trailing_space(input)
     input.chop[-1] == ' '
   end

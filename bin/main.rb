@@ -2,12 +2,12 @@
 require_relative '../lib/naming_test.rb'
 require_relative '../lib/string_colors.rb'
 require_relative '../lib/read_all.rb'
-require_relative '../lib/trailing_space_test.rb'
+require_relative '../lib/space_test.rb'
 
 class Linter
   include NamingTest
   include ReadAll
-  include TrailingSpace
+  include SpaceTest
 
   def initialize()
     @each_variable_name_error = {}
@@ -75,7 +75,7 @@ class Linter
       end
       test_trailing_space(file).each do |key, code|
         puts "  |#{file}| Error: Syntax/TrailingSpace(Unnecasery White Space At End Of Line)".yellow
-        puts '    Line: '.cyan + key.to_s.cyan + ':'.cyan + " #{code} |".red
+        puts '    Line: '.cyan + key.to_s.cyan + ':'.cyan + " #{code} |<---".red
         puts '  ---------'
       end
     end
