@@ -8,6 +8,7 @@ module ReadAll
       @each_class_name_error = {}
       @each_module_name_error = {}
       @each_trailing_space_error = {}
+      @each_empty_line_error = {}
     end
   end
 end

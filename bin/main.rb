@@ -15,6 +15,7 @@ class Linter
     @each_class_name_error = {}
     @each_module_name_error = {}
     @each_trailing_space_error = {}
+    @each_empty_line_error = {}
   end
 
   def launch
@@ -75,6 +76,11 @@ class Linter
       end
       test_trailing_space(file).each do |key, code|
         puts "  |#{file}| Error: Syntax/TrailingSpace(Unnecasery White Space At End Of Line)".yellow
+        puts '    Line: '.cyan + key.to_s.cyan + ':'.cyan + " #{code} |<---".red
+        puts '  ---------'
+      end
+      test_two_empty_lines(file).each do |key, code|
+        puts "  |#{file}| Error: Syntax/ExtraEmptyLine(Unnecasery Extra Empty Line)".yellow
         puts '    Line: '.cyan + key.to_s.cyan + ':'.cyan + " #{code} |<---".red
         puts '  ---------'
       end

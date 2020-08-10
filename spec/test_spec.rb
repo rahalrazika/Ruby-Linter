@@ -1,6 +1,6 @@
 require 'rspec'
 require './lib/naming_test.rb'
-require './lib/trailing_space_test.rb'
+require './lib/space_test.rb'
 
 describe NamingTest do
   include NamingTest
@@ -169,8 +169,8 @@ describe NamingTest do
   end
 end
 
-describe TrailingSpace do
-  include TrailingSpace
+describe SpaceTest do
+  include SpaceTest
 
   describe '#test_if_trailing_space' do
     it 'returns true if given a string with a space on the end' do
@@ -179,6 +179,16 @@ describe TrailingSpace do
 
     it 'returns false if given a string without a space on the end' do
       expect(test_if_trailing_space("test\n")).to be false
+    end
+  end
+
+  describe '#test_if_empty_line(input)' do
+    it 'returns true if given an empty line' do
+      expect(test_if_empty_line('')).to be true
+    end
+
+    it 'returns false if given anything besides an empty line' do
+      expect(test_if_empty_line('gfdg\n')).to be false
     end
   end
 end
