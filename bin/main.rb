@@ -33,10 +33,10 @@ class Linter
         exit
       end
     end
-    puts test_variable_name(@file_path)
-    puts test_method_name(@file_path)
-    puts test_class_name(@file_path)
-    puts test_module_name(@file_path)
+    puts test_variable_name(file)
+    puts test_method_name(file)
+    puts test_class_name(file)
+    puts test_module_name(file)
   end
 
   def run
