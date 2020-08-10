@@ -33,6 +33,11 @@ class Linter
         exit
       end
     end
+    display_results(file)
+  end
+
+  def display_results(file)
+    puts "Errors inside of #{file}:"
     puts test_variable_name(file)
     puts test_method_name(file)
     puts test_class_name(file)
