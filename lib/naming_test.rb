@@ -1,3 +1,4 @@
+# rubocop: disable Metrics/ModuleLength
 module NamingTest
   def test_if_variable_name(input)
     if %w[class def module == += -=].any? { |word| input.include? word }
@@ -129,3 +130,4 @@ module NamingTest
     @each_module_name_error
   end
 end
+# rubocop: enable Metrics/ModuleLength
