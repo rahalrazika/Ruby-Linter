@@ -174,11 +174,11 @@ describe TrailingSpace do
 
   describe '#test_if_trailing_space' do
     it 'returns true if given a string with a space on the end' do
-      expect(test_if_trailing_space('test ')).to be true
+      expect(test_if_trailing_space("test \n")).to be true
     end
 
     it 'returns false if given a string without a space on the end' do
-      expect(test_if_trailing_space('test')).to be false
+      expect(test_if_trailing_space("test\n")).to be false
     end
   end
 end

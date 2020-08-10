@@ -2,17 +2,19 @@
 require_relative '../lib/naming_test.rb'
 require_relative '../lib/string_colors.rb'
 require_relative '../lib/read_all.rb'
+require_relative '../lib/trailing_space_test.rb'
 
 class Linter
   include NamingTest
   include ReadAll
+  include TrailingSpace
 
   def initialize()
     @each_variable_name_error = {}
     @each_method_name_error = {}
     @each_class_name_error = {}
     @each_module_name_error = {}
-    @each_trailing_space = {}
+    @each_trailing_space_error = {}
   end
 
   def launch
@@ -48,7 +50,7 @@ class Linter
     puts '---------'
     puts "Errors inside of #{file}:".cyan
     puts '---------'
-    if test_variable_name(file) == {} && test_method_name(file) == {} && test_class_name(file) == {} && test_module_name(file) == {}
+    if test_variable_name(file) == {} && test_method_name(file) == {} && test_class_name(file) == {} && test_module_name(file) == {} && test_trailing_space(file) == {}
       puts "  No errors found inside of #{file}".green
     else
       test_variable_name(file).each do |key, code|
@@ -69,6 +71,11 @@ class Linter
       test_module_name(file).each do |key, code|
         puts "  |#{file}| Error: Syntax/ModuleName(UsePascalCase)".yellow
         puts '    Line: '.cyan + key.to_s.cyan + ':'.cyan + " #{code}".red
+        puts '  ---------'
+      end
+      test_trailing_space(file).each do |key, code|
+        puts "  |#{file}| Error: Syntax/TrailingSpace(Unnecasery White Space At End Of Line)".yellow
+        puts '    Line: '.cyan + key.to_s.cyan + ':'.cyan + " #{code} |".red
         puts '  ---------'
       end
     end
