@@ -38,28 +38,32 @@ class Linter
 
   # rubocop: disable Metrics/MethodLength
   def display_results(file)
+    puts " "
+    puts '---------'
     puts "Errors inside of #{file}:"
     puts '---------'
     test_variable_name(file).each do |key, code|
       puts "  |#{file}| Error: Syntax/VariableName(use_snake_case)"
       puts '    Line: ' + key.to_s + ": #{code}"
-      puts '---------'
+      puts '  ---------'
     end
     test_method_name(file).each do |key, code|
       puts "  |#{file}| Error: Syntax/MethodName(use_snake_case)"
       puts '    Line: ' + key.to_s + ": #{code}"
-      puts '---------'
+      puts '  ---------'
     end
     test_class_name(file).each do |key, code|
       puts "  |#{file}| Error: Syntax/ClassName(UsePascalCase)"
       puts '    Line: ' + key.to_s + ": #{code}"
-      puts '---------'
+      puts '  ---------'
     end
     test_module_name(file).each do |key, code|
       puts "  |#{file}| Error: Syntax/ModuleName(UsePascalCase)"
       puts '    Line: ' + key.to_s + ": #{code}"
-      puts '---------'
+      puts '  ---------'
     end
+    puts '---------'
+    puts " "
   end
   # rubocop: enable Metrics/MethodLength
 
