@@ -36,21 +36,32 @@ class Linter
     display_results(file)
   end
 
+  # rubocop: disable Metrics/MethodLength
   def display_results(file)
     puts "Errors inside of #{file}:"
+    puts '---------'
     test_variable_name(file).each do |key, code|
-      puts "|#{file}| Error: Syntax/VariableName(use_snake_case) Line: " + key.to_s + ": #{code}"
+      puts "  |#{file}| Error: Syntax/VariableName(use_snake_case)"
+      puts '    Line: ' + key.to_s + ": #{code}"
+      puts '---------'
     end
     test_method_name(file).each do |key, code|
-      puts "|#{file}| Error: Syntax/MethodName(use_snake_case) Line: " + key.to_s + ": #{code}"
+      puts "  |#{file}| Error: Syntax/MethodName(use_snake_case)"
+      puts '    Line: ' + key.to_s + ": #{code}"
+      puts '---------'
     end
     test_class_name(file).each do |key, code|
-      puts "|#{file}| Error: Syntax/ClassName(UsePascalCase) Line: " + key.to_s + ": #{code}"
+      puts "  |#{file}| Error: Syntax/ClassName(UsePascalCase)"
+      puts '    Line: ' + key.to_s + ": #{code}"
+      puts '---------'
     end
     test_module_name(file).each do |key, code|
-      puts "|#{file}| Error: Syntax/ModuleName(UsePascalCase) Line: " + key.to_s + ": #{code}"
+      puts "  |#{file}| Error: Syntax/ModuleName(UsePascalCase)"
+      puts '    Line: ' + key.to_s + ": #{code}"
+      puts '---------'
     end
   end
+  # rubocop: enable Metrics/MethodLength
 
   def read_all
     file_names = Dir['./bin/error/*.rb'].map { |path| path[12, path.size] }
