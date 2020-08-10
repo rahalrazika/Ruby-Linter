@@ -4,7 +4,7 @@ require_relative '../lib/naming_test.rb'
 class Linter
   include NamingTest
 
-  def initialize(_file_path)
+  def initialize()
     @each_variable_name_error = {}
     @each_method_name_error = {}
     @each_class_name_error = {}
@@ -39,11 +39,23 @@ class Linter
     puts test_module_name(file)
   end
 
+  def read_all
+    file_names = Dir['./bin/error/*.rb'].map { |path| path[12, path.size] }
+    file_names.each do |file|
+      read_file('bin/error/' + file)
+      @each_variable_name_error = {}
+      @each_method_name_error = {}
+      @each_class_name_error = {}
+      @each_module_name_error = {}
+    end
+  end
+
   def run
     launch
     read_file(@file_path) unless @file == '*'
+    read_all if @file == '*'
   end
 end
 
-lint = Linter.new('bin/error/test.rb')
+lint = Linter.new
 lint.run

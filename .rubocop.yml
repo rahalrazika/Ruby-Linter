@@ -3,6 +3,7 @@ AllCops:
     - "Guardfile"
     - "Rakefile"
     - 'bin/error/test.rb'
+    - 'bin/error/test2.rb'
 
   DisplayCopNames: true
 
