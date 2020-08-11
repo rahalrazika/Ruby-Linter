@@ -31,7 +31,7 @@ $ cd Ruby-Linter
 $ bin/main.rb
 ```
 
-#### Rspec Testing
+#### Rspec Testing (optional)
 
 To test the code, run `rspec --format doc` from root of the folder using terminal.
 > Rspec is used for the test.
@@ -40,6 +40,143 @@ To install Rspec if you do not already have Rspec installed run the bash command
 ~~~bash
 $ gem install rspec
 ~~~
+
+# The Operations of This Linter
+
+## 1. Layout
+
+### Checks for trailing spaces
+
+- Detects unnecessary spaces at the end of a line
+
+#### good
+
+```
+  def example|
+    puts 'example'|
+  end|
+```
+
+#### bad
+
+```
+  def example |
+    puts 'example' |
+  end |
+```
+
+
+### Checks for multiple empty lines
+
+- Checks if there is more than one blank line in after the other.
+
+#### good
+
+```
+  class Example
+    def initialize(name)
+      @name = name
+    end
+  end
+
+   def example
+    puts 'example'
+  end
+```
+
+#### bad
+
+```
+  class Example
+    def initialize(name)
+      @name = name
+    end
+  end
+
+
+  def example
+    puts 'example'
+  end
+```
+
+## 2. Naming
+
+### Checks Variable Name
+
+- Detects if variables are using proper snake_case for their names.
+
+#### good
+
+```
+example_var = 0
+```
+
+#### bad
+
+```
+exampleVar = 0
+```
+
+### Checks Method Name
+
+- Detects if methods are using proper snake_case for their names.
+
+#### good
+
+```
+def example_method
+  # code
+end
+```
+
+#### bad
+
+```
+def ExampleMethod
+  # code
+end
+```
+
+### Checks Class Name
+
+- Detects if classes are using proper PascalCase for their names.
+
+#### good
+
+```
+class ExampleClass
+  # code
+end
+```
+
+#### bad
+
+```
+class example_class
+  # code
+end
+```
+
+
+### Checks Module Name
+
+- Detects if Modules are using proper PascalCase for their names.
+
+#### good
+
+```
+module ExampleModule
+  # code
+end
+```
+
+#### bad
+
+```
+module example_class
+  # code
+end
+```
 
 ## Built With
 
