@@ -19,7 +19,7 @@ $ cd <folder>
 $ git clone git@github.com:jacobrees/Ruby-Linter.git
 ```
 
-To launch an instance of this game inside of your terminal you will need to navigate into the repository you have just cloned. You will do this by using `cd` inside of your terminal. Once you are inside of this folder run the command `bin/main.rb` and this will start the game. 
+To launch DragonLintAlpha inside of your terminal you will need to navigate into the repository you have just cloned. You will do this by using `cd` inside of your terminal. Once you are inside of this folder run the command `bin/main.rb` and this will launch the program. 
 
 Below shows the following commands you will need to run to achieve this:
 
@@ -31,7 +31,7 @@ $ cd Ruby-Linter
 $ bin/main.rb
 ```
 
-#### Testing
+#### Rspec Testing
 
 To test the code, run `rspec --format doc` from root of the folder using terminal.
 > Rspec is used for the test.
