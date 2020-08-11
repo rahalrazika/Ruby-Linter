@@ -184,7 +184,7 @@ end
 
 ## Live Code
 
-[View Live Code](https://repl.it)
+[View Live Code](https://repl.it/@jacobrees24/Ruby-Linter#README.md)
 
 ## Authors
 
