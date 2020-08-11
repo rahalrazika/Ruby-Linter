@@ -186,6 +186,10 @@ end
 
 [View Live Code](https://repl.it/@jacobrees24/Ruby-Linter#README.md)
 
+## Video Demo
+
+https://www.loom.com/share/5231db35bf814650a943a426ac94177f
+
 ## Authors
 
 👤 **Jacob Rees**
