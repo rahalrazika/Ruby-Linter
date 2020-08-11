@@ -45,7 +45,7 @@ $ gem install rspec
 
 ## 1. Layout
 
-### Checks for trailing spaces
+### Checks For Trailing Spaces
 
 - Detects unnecessary spaces at the end of a line
 
@@ -66,7 +66,7 @@ $ gem install rspec
 ```
 
 
-### Checks for multiple empty lines
+### Checks For Multiple Empty Lines
 
 - Checks if there is more than one blank line in after the other.
 
